@@ -74,20 +74,43 @@
 	}
 	
 </style>
+<script src="http://libs.baidu.com/jquery/1.10.2/jquery.min.js"></script>
+<script>
+	$(document).ready(function() {
+		$(window).scroll(function () {
+			var scrollTop = $(document).scrollTop();
+			var menu = $("#menu");
+			var items = $("#content").find(".item");
+
+			var currentId;
+			items.each(function() {
+				var m = $(this);
+				var itemTop = m.scrollTop;
+				if (scrollTop > itemTop) {
+					currentId = "#" + m.attr("id");
+				} else {
+					return false;
+				}
+				m.removeClass("current");
+			})
+			$(currentId).addClass("current");
+		})
+	})
+</script>
 </head>
 <body>
     <div id="menu">
     		<ul>
-    			<li><a href="#" class="current">1F 男装</a></li>
-    			<li><a href="#">2F 女装</a></li>
-    			<li><a href="#">3F 美妆</a></li>
-    			<li><a href="#">4F 数码</a></li>
-    			<li><a href="#">5F 母婴</a></li>
+    			<li><a href="#item1" class="current">1F 男装</a></li>
+    			<li><a href="#item2">2F 女装</a></li>
+    			<li><a href="#item3">3F 美妆</a></li>
+    			<li><a href="#item4">4F 数码</a></li>
+    			<li><a href="#item5">5F 母婴</a></li>
     		</ul>
     </div>
     <div id="content">
     		<h1>地狗购物网</h1>
-    		<div class="item">
+    		<div id="item1" class="item">
     			<h2>1F 男装</h2>
     			<ul>
     				<li><a href="#"><img src="1F.jpg"/></a></li>
@@ -101,7 +124,7 @@
     				<li><a href="#"><img src="1F.jpg"/></a></li>
     			</ul>
     		</div>
-    		<div class="item">
+    		<div id="item2" class="item">
     			<h2>2F 女装</h2>
     			<ul>
     				<li><a href="#"><img src="2F.jpg"/></a></li>
@@ -115,7 +138,7 @@
     				<li><a href="#"><img src="2F.jpg"/></a></li>
     			</ul>
     		</div>
-    		<div class="item">
+    		<div id="item3" class="item">
     			<h2>3F 美妆</h2>
     			<ul>
     				<li><a href="#"><img src="3F.jpg"/></a></li>
@@ -129,7 +152,7 @@
     				<li><a href="#"><img src="3F.jpg"/></a></li>
     			</ul>
     		</div>
-    		<div class="item">
+    		<div id="item4" class="item">
     			<h2>4F 数码</h2>
     			<ul>
     				<li><a href="#"><img src="4F.png"/></a></li>
@@ -143,7 +166,7 @@
     				<li><a href="#"><img src="4F.png"/></a></li>
     			</ul>
     		</div>
-    		<div class="item">
+    		<div id="item5" class="item">
     			<h2>5F 母婴</h2>
     			<ul>
     				<li><a href="#"><img src="5F.jpg"/></a></li>
